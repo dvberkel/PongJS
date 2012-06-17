@@ -1,4 +1,4 @@
-(function(Backbone, undefined){
+(function(Pong, Backbone, undefined){
     var nextPosition = function(position, velocity) {
 	return {
 	    x : (position.x + velocity.vx),
@@ -38,5 +38,5 @@
 	}
     });
 
-    window.Ball = Ball;
-})(Backbone);
+    Pong.Ball = Ball;
+})(Pong, Backbone);

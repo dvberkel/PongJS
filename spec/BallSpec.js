@@ -2,7 +2,7 @@ describe("A Ball", function(){
     var ball;
 
     beforeEach(function(){
-	ball = new Ball();
+	ball = new Pong.Ball();
     });
     
     it("should have a default position", function(){
