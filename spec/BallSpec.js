@@ -25,4 +25,26 @@ describe("A Ball", function(){
 	});
 	expect(ball).toHaveVelocity(originalVelocity);
     });
+
+    it("should be able to reflect x component of velocity", function(){
+	var originalVelocity = ball.get("velocity");
+	
+	ball.reflectVx();
+	
+	expect(ball).toHaveVelocity({ 
+	    vx : -originalVelocity.vx,
+	    vy : originalVelocity.vy
+	});
+    });
+
+    it("should be able to reflect y component of velocity", function(){
+	var originalVelocity = ball.get("velocity");
+	
+	ball.reflectVy();
+	
+	expect(ball).toHaveVelocity({ 
+	    vx : originalVelocity.vx,
+	    vy : -originalVelocity.vy
+	});
+    });
 });
