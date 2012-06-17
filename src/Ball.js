@@ -35,6 +35,14 @@
 	    this.set({
 		velocity : nextVelocity(this.get("velocity"), 1, -1)
 	    });
+	},
+
+	isHeadingRight : function(){
+	    return this.get("velocity").vx > 0;
+	},
+
+	isHeadingLeft : function(){
+	    return this.get("velocity").vx < 0;
 	}
     });
 

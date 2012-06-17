@@ -4,13 +4,22 @@
 
 	observe : function(aBall){
 	    aBall.bind("change:position", function(ball){
-		var ballX = ball.get("position").x;
-		var vx = ball.get("velocity").vx;
-		var wallX = this.get("x");
-		if ((vx > 0 && ballX >= wallX) || (vx <  0 && ballX <= wallX)) {
+		if (this.isHitBy(ball)) {
 		    ball.reflectVx();
 		}
 	    }, this);
+	},
+
+	isHitBy : function(aBall) {
+	    return (aBall.isHeadingRight() && this.isHitFromLeftBy(aBall)) || (aBall.isHeadingLeft() && this.isHitFromRightBy(aBall));
+	},
+
+	isHitFromLeftBy : function(aBall) {
+	    return aBall.get("position").x >= this.get("x");
+	},
+
+	isHitFromRightBy : function(aBall) {
+	    return aBall.get("position").x <= this.get("x");
 	}
     });
 
