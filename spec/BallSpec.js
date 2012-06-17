@@ -10,7 +10,19 @@ describe("A Ball", function(){
     });
 
     it("should have a default velocity", function(){
-	expect(ball.get("velocity").vx).toBe(1);
-	expect(ball.get("velocity").vy).toBe(1);
+	expect(ball).toHaveVelocity({ vx : 1, vy : 1 });
+    });
+
+    it("should have a correct postion after update", function(){
+	var originalPosition = ball.get("position");
+	var originalVelocity = ball.get("velocity");
+	
+	ball.update();
+	
+	expect(ball).toBeAt({
+	    x : (originalPosition.x + originalVelocity.vx),
+	    y : (originalPosition.y + originalVelocity.vy)
+	});
+	expect(ball).toHaveVelocity(originalVelocity);
     });
 });
