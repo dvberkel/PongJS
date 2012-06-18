@@ -20,4 +20,5 @@ The following frameworks are demonstrated in this project.
   is a Model-View-Controller (MVC) framework which will decouple the
   domain from the different representation.
 
-Which graphical library will be uses is currently undecided.
+We will be using [Raphael](http://raphaeljs.com/ "Homepage for
+Raphael") for a graphics library.
