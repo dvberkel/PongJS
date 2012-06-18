@@ -3,3 +3,8 @@ body {
     margin: 0px;
     padding: 0px 5px;
 }
+
+#canvas {
+    width: 640px;
+    margin: 15px auto;
+}
