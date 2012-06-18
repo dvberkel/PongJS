@@ -53,6 +53,36 @@
 	    return this.get("velocity").vy < 0;
 	}
     });
+    
+    var BallView = Backbone.View.extend({
+	initialize : function(){
+	    this.element = this.circle();
+
+	    this.model.bind("change", function(){
+		this.render();
+	    }, this);
+	},
+
+	circle : function(){
+	    var position = this.model.get("position");
+	    var c = this.paper().circle(position.x, position.y, 5);
+	    c.attr("fill", "red");
+	    c.attr("stroke", "black");
+	    return c;
+	},
+
+	paper : function() {
+	    return this.options.paper;
+	},
+
+	render : function() {
+	    var position = this.model.get("position");
+	    this.element.attr("cx", position.x);
+	    this.element.attr("cy", position.y);
+	}
+	
+    });
 
     Pong.Ball = Ball;
+    Pong.BallView = BallView;
 })(Pong, Backbone);
