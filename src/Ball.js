@@ -43,6 +43,14 @@
 
 	isHeadingLeft : function(){
 	    return this.get("velocity").vx < 0;
+	},
+
+	isHeadingUp : function(){
+	    return this.get("velocity").vy > 0;
+	},
+
+	isHeadingDown : function(){
+	    return this.get("velocity").vy < 0;
 	}
     });
 

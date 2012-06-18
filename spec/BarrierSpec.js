@@ -21,3 +21,27 @@ describe("A Wall", function(){
 	expect(ball).toHaveVelocity({ vx : 1, vy : 0 });
     });
 });
+
+describe("A Ceiling", function(){
+    it("should bounce back balls from below", function(){
+	var ball = new Pong.Ball({ position : { x : 0, y : 0}, velocity : { vx : 0, vy : 1 } });
+	var ceiling = new Pong.Ceiling({ y : 2 });
+	ceiling.observe(ball);
+
+	ball.update();
+	ball.update();
+
+	expect(ball).toHaveVelocity({ vx : 0, vy : -1 });
+    });
+
+    it("should bounce back balls from above", function(){
+	var ball = new Pong.Ball({ position : { x : 0, y : 2}, velocity : { vx : 0, vy : -1 } });
+	var ceiling = new Pong.Ceiling({ y : 0 });
+	ceiling.observe(ball);
+
+	ball.update();
+	ball.update();
+
+	expect(ball).toHaveVelocity({ vx : 0, vy : 1 });
+    });
+});

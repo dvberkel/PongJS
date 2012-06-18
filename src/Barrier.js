@@ -23,5 +23,31 @@
 	}
     });
 
+    var Ceiling = Backbone.Model.extend({
+	defaults : { y : 0 },
+
+	observe : function(aBall){
+	    aBall.bind("change:position", function(ball){
+		if (this.isHitBy(ball)) {
+		    ball.reflectVy();
+		}
+	    }, this);
+	},
+
+	isHitBy : function(aBall) {
+	    return (aBall.isHeadingUp() && this.isHitFromBelowBy(aBall)) || (aBall.isHeadingDown() && this.isHitFromAboveBy(aBall));
+	},
+
+	isHitFromBelowBy : function(aBall) {
+	    return aBall.get("position").y >= this.get("y");
+	},
+
+	isHitFromAboveBy : function(aBall) {
+	    return aBall.get("position").y <= this.get("y");
+	}
+	
+    });
+
     Pong.Wall = Wall;
+    Pong.Ceiling = Ceiling;
 })(Pong, Backbone);
