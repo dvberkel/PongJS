@@ -19,10 +19,13 @@
 
 	var leftWall  = new Pong.Wall({ x : 2 }).observe(ball);
 	var rightWall = new Pong.Wall({ x : 637 }).observe(ball);
-	new Pong.Ceiling({ y : 0 }).observe(ball);
-	new Pong.Ceiling({ y : 480 }).observe(ball);
         new Pong.WallView({ model : leftWall, paper : paper});
         new Pong.WallView({ model : rightWall, paper : paper});
+	
+	var upCeiling = new Pong.Ceiling({ y : 0 }).observe(ball);
+	var downCeiling = new Pong.Ceiling({ y : 479 }).observe(ball);
+	new Pong.CeilingView({ model: upCeiling, paper : paper });
+	new Pong.CeilingView({ model: downCeiling, paper : paper });
 	
 	(function loop(){
 	    requestAnimFrame(loop);
