@@ -15,11 +15,11 @@
 	},
 
 	isHitFromLeftBy : function(aBall) {
-	    return aBall.get("position").x >= this.get("x");
+	    return aBall.get("position").x == this.get("x");
 	},
 
 	isHitFromRightBy : function(aBall) {
-	    return aBall.get("position").x <= this.get("x");
+	    return aBall.get("position").x == this.get("x");
 	}
     });
 
@@ -39,11 +39,11 @@
 	},
 
 	isHitFromBelowBy : function(aBall) {
-	    return aBall.get("position").y >= this.get("y");
+	    return aBall.get("position").y == this.get("y");
 	},
 
 	isHitFromAboveBy : function(aBall) {
-	    return aBall.get("position").y <= this.get("y");
+	    return aBall.get("position").y == this.get("y");
 	}
 	
     });

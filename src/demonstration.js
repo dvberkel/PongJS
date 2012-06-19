@@ -14,9 +14,14 @@
 	var paper = Raphael("canvas", 640, 480);
 	paper.rect(0, 0, paper.width, paper.height).attr("fill", "white");
 	
-	var ball = new Pong.Ball({ position : { x : 50, y : 50 }});
+	var ball = new Pong.Ball({ position : { x : 50, y : 50 } });
 	new Pong.BallView({ model: ball, paper : paper });
 
+	new Pong.Wall({ x : 0 }).observe(ball);
+	new Pong.Wall({ x : 640 }).observe(ball);
+	new Pong.Ceiling({ y : 0 }).observe(ball);
+	new Pong.Ceiling({ y : 480 }).observe(ball);
+	
 	(function loop(){
 	    requestAnimFrame(loop);
 	    ball.update();
