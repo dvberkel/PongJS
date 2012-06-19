@@ -15,12 +15,14 @@
 	paper.rect(0, 0, paper.width, paper.height).attr("fill", "white");
 	
 	var ball = new Pong.Ball({ position : { x : 50, y : 50 }, velocity : { vx : 3, vy : 4 } });
-	new Pong.BallView({ model: ball, paper : paper });
+	new Pong.BallView({ model : ball, paper : paper });
 
-	new Pong.Wall({ x : 0 }).observe(ball);
-	new Pong.Wall({ x : 640 }).observe(ball);
+	var leftWall  = new Pong.Wall({ x : 2 }).observe(ball);
+	var rightWall = new Pong.Wall({ x : 637 }).observe(ball);
 	new Pong.Ceiling({ y : 0 }).observe(ball);
 	new Pong.Ceiling({ y : 480 }).observe(ball);
+        new Pong.WallView({ model : leftWall, paper : paper});
+        new Pong.WallView({ model : rightWall, paper : paper});
 	
 	(function loop(){
 	    requestAnimFrame(loop);
