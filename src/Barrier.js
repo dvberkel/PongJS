@@ -38,6 +38,7 @@
 		    ball.reflectVy();
 		}
 	    }, this);
+	    return this;
 	},
 
 	isHitBy : function(aBall) {
@@ -56,10 +57,38 @@
 	    var position = aBall.get("position");
 	    var velocity = aBall.get("velocity");
 	    return Math.abs(position.y - this.get("y")) <= Math.abs(velocity.vy);
-	}
+	}	
+    });
+
+    var CeilingView = Backbone.View.extend({
+ 	initialize : function(){
+	    this.element = this.ceiling();
+
+	    this.model.bind("change", function(){
+		this.render();
+	    }, this);
+	},
 	
+	ceiling : function(){
+	    var y = this.model.get("y");
+	    var c = this.paper().rect(0, y, 640, 1);
+	    c.attr("fill", "black");
+	    c.attr("stroke", "black");
+	    return c;
+	},
+
+	paper : function() {
+	    return this.options.paper;
+	},
+
+	render : function() {
+	    var y = this.model.get("y");
+	    this.element.attr("y", y);
+	}
     });
 
     Pong.Wall = Wall;
     Pong.Ceiling = Ceiling;
+    Pong.CeilingView = CeilingView;
+
 })(Pong, Backbone);

@@ -19,9 +19,12 @@
 
 	new Pong.Wall({ x : 0 }).observe(ball);
 	new Pong.Wall({ x : 640 }).observe(ball);
-	new Pong.Ceiling({ y : 0 }).observe(ball);
-	new Pong.Ceiling({ y : 480 }).observe(ball);
-	
+	var CeilingUp = new Pong.Ceiling({ y : 0 }).observe(ball);
+	var CeilingDown = new Pong.Ceiling({ y : 479 }).observe(ball);
+
+	new Pong.CeilingView({ model: CeilingUp, paper : paper });
+	new Pong.CeilingView({ model: CeilingDown, paper : paper });
+
 	(function loop(){
 	    requestAnimFrame(loop);
 	    ball.update();
