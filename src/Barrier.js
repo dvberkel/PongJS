@@ -23,7 +23,9 @@
 	},
 
 	isInRangeOf : function(aBall) {
-	    return aBall.get("position").x == this.get("x");
+	    var position = aBall.get("position");
+	    var velocity = aBall.get("velocity");
+	    return Math.abs(position.x - this.get("x")) <= Math.abs(velocity.vx);
 	}
     });
 
@@ -51,7 +53,9 @@
 	},
 
 	isInRangeOf : function(aBall) {
-	    return aBall.get("position").y == this.get("y");
+	    var position = aBall.get("position");
+	    var velocity = aBall.get("velocity");
+	    return Math.abs(position.y - this.get("y")) <= Math.abs(velocity.vy);
 	}
 	
     });

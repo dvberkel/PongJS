@@ -14,7 +14,7 @@
 	var paper = Raphael("canvas", 640, 480);
 	paper.rect(0, 0, paper.width, paper.height).attr("fill", "white");
 	
-	var ball = new Pong.Ball({ position : { x : 50, y : 50 } });
+	var ball = new Pong.Ball({ position : { x : 50, y : 50 }, velocity : { vx : 3, vy : 4 } });
 	new Pong.BallView({ model: ball, paper : paper });
 
 	new Pong.Wall({ x : 0 }).observe(ball);
