@@ -11,14 +11,18 @@
 	},
 
 	isHitBy : function(aBall) {
-	    return (aBall.isHeadingRight() && this.isHitFromLeftBy(aBall)) || (aBall.isHeadingLeft() && this.isHitFromRightBy(aBall));
+	    return this.isHitFromLeftBy(aBall) || this.isHitFromRightBy(aBall);
 	},
 
 	isHitFromLeftBy : function(aBall) {
-	    return aBall.get("position").x == this.get("x");
+	    return aBall.isHeadingRight() && this.isInRangeOf(aBall);
 	},
 
 	isHitFromRightBy : function(aBall) {
+	    return aBall.isHeadingLeft() && this.isInRangeOf(aBall);
+	},
+
+	isInRangeOf : function(aBall) {
 	    return aBall.get("position").x == this.get("x");
 	}
     });
@@ -35,14 +39,18 @@
 	},
 
 	isHitBy : function(aBall) {
-	    return (aBall.isHeadingUp() && this.isHitFromBelowBy(aBall)) || (aBall.isHeadingDown() && this.isHitFromAboveBy(aBall));
+	    return this.isHitFromBelowBy(aBall) || this.isHitFromAboveBy(aBall);
 	},
 
 	isHitFromBelowBy : function(aBall) {
-	    return aBall.get("position").y == this.get("y");
+	    return aBall.isHeadingUp() && this.isInRangeOf(aBall);
 	},
 
 	isHitFromAboveBy : function(aBall) {
+	    return aBall.isHeadingDown() && this.isInRangeOf(aBall);
+	},
+
+	isInRangeOf : function(aBall) {
 	    return aBall.get("position").y == this.get("y");
 	}
 	
