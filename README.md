@@ -1,7 +1,8 @@
 PongJS
 ======
 
-A demonstration of Javascript frameworks by implementing pong.
+A demonstration of Javascript frameworks by implementing pong. See the
+live [demonstration](http://dvberkel.github.com/PongJS "GitHub pages for PongJS").
 
 Pong
 ----
