@@ -9,6 +9,11 @@ beforeEach(function() {
 	    var ball = this.actual;
 	    var velocity = ball.get("velocity");
 	    return velocity.vx === expectedVelocity.vx && velocity.vy === expectedVelocity.vy;
-	}
+	},
+        toBeOfSize: function(expectedSize) {
+            var paddle = this.actual;
+            var size = paddle.get("size");
+            return size.width === expectedSize.width && size.height === expectedSize.height;
+        }
     });
 });
