@@ -14,7 +14,7 @@
 	var paper = Raphael("canvas", 640, 480);
 	paper.rect(0, 0, paper.width, paper.height).attr("fill", "white");
 	
-	var ball = new Pong.Ball({ position : { x : 50, y : 50 }, velocity : { vx : 3, vy : 4 } });
+	var ball = new Pong.Ball({ position : { x : 50, y : 50 }, velocity : { vx : 5, vy : 3 } });
 	new Pong.BallView({ model : ball, paper : paper });
 
 	var leftWall  = new Pong.Wall({ x : 2 }).observe(ball);
@@ -26,6 +26,13 @@
 	var downCeiling = new Pong.Ceiling({ y : 479 }).observe(ball);
 	new Pong.CeilingView({ model: upCeiling, paper : paper });
 	new Pong.CeilingView({ model: downCeiling, paper : paper });
+        
+        var paddle = new Pong.Paddle({ position : {x:200,y:100}}).observe(ball);
+        new Pong.PaddleView({ model : paddle, paper : paper}); 
+        var horizontalPaddle= new Pong.Paddle({position: {x:450,y:370}, 
+                                               size : {width : 80,height : 5}}).observe(ball);
+        new Pong.PaddleView({ model : horizontalPaddle, paper : paper});
+        
 	
 	(function loop(){
 	    requestAnimFrame(loop);
