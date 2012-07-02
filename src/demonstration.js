@@ -33,6 +33,17 @@
                                                size : {width : 80,height : 5}}).observe(ball);
         new Pong.PaddleView({ model : horizontalPaddle, paper : paper});
         
+        const upKey = 38;
+        const downKey = 40;
+        function keydown(evt){
+            var key = evt.keyCode;
+            if (key == upKey) {
+                paddle.moveUp();
+            } else if( key ==downKey ) {
+                paddle.moveDown();
+            }
+        };
+        window.addEventListener("keydown",keydown);
 	
 	(function loop(){
 	    requestAnimFrame(loop);
