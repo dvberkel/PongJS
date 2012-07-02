@@ -106,7 +106,22 @@
             }
 
 	    return (xAtImpact <= xmax) && (xAtImpact >= xmin);
-	}
+	},
+       
+        moveUp : function(){
+            var pos = this.get("position");
+            var newy = Math.max(pos.y-5, 0);
+            this.set("position",{x:pos.x, y:newy});
+        },
+        
+        moveDown : function(){
+	    var pos = this.get("position");
+	    var size = this.get("size");
+	    var newy = Math.min(pos.y+5, 480-size.height);
+	    this.set("position",{x:pos.x, y:newy});
+        } 
+   
+
     });
 
 
