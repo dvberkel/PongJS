@@ -29,9 +29,15 @@
         
         var paddle = new Pong.Paddle({ position : {x:200,y:100}}).observe(ball);
         new Pong.PaddleView({ model : paddle, paper : paper}); 
-        var horizontalPaddle= new Pong.Paddle({position: {x:450,y:370}, 
-                                               size : {width : 80,height : 5}}).observe(ball);
-        new Pong.PaddleView({ model : horizontalPaddle, paper : paper});
+        var autoPaddle= new Pong.Paddle({position: { x : 600, y : 370 } }).observe(ball);
+        new Pong.PaddleView({ model : autoPaddle, paper : paper});
+
+	ball.bind("change", function(ball){
+	    var x = this.get("position").x;
+	    var offset = this.get("size").height / 2;
+	    var y = ball.get("position").y;
+	    this.set({position : { x : x, y : (y - offset)}});
+	}, autoPaddle);
         
         const upKey = 38;
         const downKey = 40;
