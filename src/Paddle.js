@@ -2,7 +2,8 @@
     var Paddle = Backbone.Model.extend({
         defaults : {
             size     : {width : 5, height : 80},
-            position : { x : 0, y : 0} 
+            position : { x : 0, y : 0},
+            speed    : 10,
         },
         
 	observe : function(aBall){
@@ -110,14 +111,14 @@
        
         moveUp : function(){
             var pos = this.get("position");
-            var newy = Math.max(pos.y-5, 0);
+            var newy = Math.max(pos.y-this.get("speed"), 0);
             this.set("position",{x:pos.x, y:newy});
         },
         
         moveDown : function(){
 	    var pos = this.get("position");
 	    var size = this.get("size");
-	    var newy = Math.min(pos.y+5, 480-size.height);
+	    var newy = Math.min(pos.y+this.get("speed"), 480-size.height);
 	    this.set("position",{x:pos.x, y:newy});
         } 
    
